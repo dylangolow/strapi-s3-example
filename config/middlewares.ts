@@ -1,0 +1,41 @@
+export default [
+  'strapi::errors',
+  /* Replace 'strapi::security', with this snippet */
+  /* Beginning of snippet */
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'https:'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            // 'beacon-strapi-media-library.s3.us-east-1.amazonaws.com',
+            'MY_S3_BUCKET.s3.us-east-1.amazonaws.com',
+
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            // 'beacon-strapi-media-library.s3.us-east-1.amazonaws.com',
+            's3.us-east-1.amazonaws.com',
+          ],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
+  /* End of snippet */
+  'strapi::cors',
+  'strapi::poweredBy',
+  'strapi::logger',
+  'strapi::query',
+  'strapi::body',
+  'strapi::session',
+  'strapi::favicon',
+  'strapi::public',
+];
